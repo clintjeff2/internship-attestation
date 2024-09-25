@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>LandmarkStudentPortal.com</title>
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="landing-page">
+				<header class="header">
+					<div class="container">
+						<div class="img-container">
+							<img src="img/landmark-tech-logo.png" alt="" />
+						</div>
+					</div>
+				</header>
+
+				<div class="landing-content">
+					<div class="landing-text">
+						<h1 class="heading">Internship Attestation Registration Form</h1>
+
+						<!-- <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum tempore neque ut ipsum quam a.</p> -->
+					</div>
+
+					<form id="form">
+						<div class="input-field">
+							<label for="name">Full Names</label>
+							<input
+								class="input"
+								type="text"
+								name="name"
+								id="name"
+								placeholder="as on birth certificate"
+							/>
+						</div>
+						<div class="input-field">
+							<label for="dateOfBirth">Date of Birth</label>
+							<input
+								class="input"
+								type="date"
+								name="dateOfBirth"
+								id="dateOfBirth"
+								style="width: 100%; box-sizing: border-box"
+							/>
+						</div>
+						<div class="input-field">
+							<label for="placeOfBirth">Place of birth</label>
+							<input
+								class="input"
+								type="text"
+								name="placeOfBirth"
+								id="placeOfBirth"
+							/>
+						</div>
+						<div class="input-field">
+							<label for="matricule">Matricule No</label>
+							<input
+								class="input"
+								type="text"
+								name="matricule"
+								id="matricule"
+								placeholder="e.g. LMU24SWE002"
+							/>
+						</div>
+						<div class="input-field">
+							<label for="department">Specialty </label>
+							<input
+								class="input"
+								type="text"
+								name="department"
+								id="department"
+								placeholder="e.g. Software Engineering"
+							/>
+						</div>
+						<div class="input-field">
+							<label for="department">Internship Program</label>
+							<input
+								class="input"
+								type="text"
+								name="hub"
+								id="hub"
+								placeholder="e.g. Full Stack Development, React Development, Multimedia and Animation Studio"
+							/>
+						</div>
+
+						<div class="field">
+							<!-- <label for="internshipCompany">Internship Company</label> -->
+							<div class="btns">
+								<!-- <button type="submit" class="btn llt">
+									Landmark Technology
+								</button> -->
+								<button type="submit" class="btn lss">Download Form</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<footer
+			style="
+				padding: 30px;
+				width: 100%;
+				text-align: center;
+				color: white;
+				background-color: #04143f;
+			"
+		>
+			@2024 By <b>Landmark Engineers</b>
+		</footer>
+
+		<script defer>
+			// getting all the fields
+			const form = document.getElementById('form');
+			const names = document.getElementById('name');
+			const dateOfBirth = document.getElementById('dateOfBirth');
+			const placeOfBirth = document.getElementById('placeOfBirth');
+			const matricule = document.getElementById('matricule');
+			const department = document.getElementById('department');
+			const hub = document.getElementById('hub');
+			// const project = document.getElementById('project');
+
+			const btn = document.querySelector('.llt');
+			const btn2 = document.querySelector('.lss');
+
+			form.addEventListener('submit', (e) => {
+				// prevents form from submitting
+				e.preventDefault();
+
+				// getting the inputted values
+				const nameValue = names.value;
+				const birthValue = dateOfBirth.value;
+				const placevalue = placeOfBirth.value;
+				const matriculeValue = matricule.value;
+				const departmentValue = department.value;
+				const hubName = hub.value;
+
+				// storing to local storage
+				window.localStorage.setItem('full-name', nameValue);
+				window.localStorage.setItem('date-birth', birthValue);
+				window.localStorage.setItem('place-birth', placevalue);
+				window.localStorage.setItem('matricule-value', matriculeValue);
+				window.localStorage.setItem('department-value', departmentValue);
+				window.localStorage.setItem('hub', hubName);
+
+				// window.location.href = "LMT.html";
+			});
+
+			// this ensures all inputs are filled
+			// btn.addEventListener('click', () => {
+			// 	// window.location.href = "LMT.html";
+			// 	var nv = names.value;
+			// 	var dv = dateOfBirth.value;
+			// 	var pv = placeOfBirth.value;
+			// 	var mat = matricule.value;
+			// 	var dp = department.value;
+
+			// 	if (nv === '' || dv === '' || pv === '' || mat === '' || dp === '') {
+			// 		alert('all inputs must be filled');
+			// 	} else {
+			// 		window.location.href = 'LMT.html';
+			// 	}
+			// });
+
+			btn2.addEventListener('click', () => {
+				// window.location.href = "LMT.html";
+				// alert('all inputs must be filled');
+				var nv = names.value;
+				var dv = dateOfBirth.value;
+				var pv = placeOfBirth.value;
+				var mat = matricule.value;
+				var dp = department.value;
+				var hb = hub.value;
+
+				if (nv === '' || dv === '' || pv === '' || mat === '' || dp === '') {
+					alert('all inputs must be filled');
+				} else {
+					window.location.href = 'LSS.html';
+				}
+			});
+
+			// Get the current date and insert it into the HTML document
+			// var currentDateElement = document.getElementById("currentDate");
+			// currentDateElement.innerHTML = "Current Date: " + getCurrentDate();
+
+			window.localStorage.clear();
+		</script>
+	</body>
+</html>

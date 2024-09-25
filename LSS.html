@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Landmark software solution</title>
+		<link rel="stylesheet" href="css/lmt.css" />
+		<link rel="stylesheet" href="LSS.html" />
+		<style>
+			.img-container {
+				max-width: 200px;
+				margin: 0;
+			}
+
+			.logo {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0 auto;
+			}
+			h2 {
+				display: flex;
+				margin: 0 0 0 -2em;
+				text-transform: uppercase;
+				flex-direction: column;
+				text-align: center;
+				line-height: 1.4;
+			}
+			h2 span {
+				font-weight: 700;
+				color: var(--dark);
+				font-size: 1.4em;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="content">
+				<div class="logo">
+					<div class="img-container">
+						<img src="img/lss-removebg-preview.png" alt="" />
+					</div>
+					<h2><span>Landmark Software</span><span>Solutions</span></h2>
+				</div>
+
+				<h1 class="heading">Letter of internship Attestation</h1>
+
+				<p class="text">Landmark Software Solution Testifies That</p>
+
+				<p class="field"><span class="name" id="fullName"></span></p>
+				<div class="field-container">
+					<p class="field">
+						born on: <span class="dateOfBirth" id="dateOfBirth"></span>
+					</p>
+					<p class="field">
+						at: <span class="placeOfBirth" id="placeOfBirth"></span>
+					</p>
+				</div>
+
+				<div class="field-container">
+					<p class="field col">
+						with school matricule:
+						<span class="matricule" id="matricule"></span>
+					</p>
+					<p class="field col">
+						and Specialty: <span class="department" id="department"></span>
+					</p>
+				</div>
+
+				<!--  -->
+				<br /><br />
+
+				<div class="holder">
+					<p class="text" style="text-align: justify; line-height: 1.7">
+						completed a Two(02) months Internship from July 1st to September
+						2024 within the <span id="hub"></span> hub at Landmark Software
+						Solutions within which
+						<b id="name" style="display: inline-block"></b>
+
+						played a crucial role in the company's IT initiatives, actively
+						contributing to the planning, development, and deployment of
+						computerized solutions. Their involvement encompassed strategic
+						planning, hands-on development, and successful deployment, providing
+						the company with valuable insights and enhancing their skills in
+						managing real-world IT projects.
+					</p>
+				</div>
+
+				<div class="field date-field">
+					<p>Done at: <span>Buea</span></p>
+					<p>on:<span id="stored-date"></span></p>
+				</div>
+
+				<!-- footer -->
+			</div>
+			<div class="sign"></div>
+
+			<div class="footer">
+				<p>
+					+1(437)221-3099 | +1(647)267-6399 | +1(437)213-2483 | +1(470)483-2473
+				</p>
+				<div class="field-container">
+					<div class="field">
+						<i class="fa fa-globe"></i>
+						<a
+							href="https://hnd-questions.com/internship-attestation/www.landmarksolution.cm"
+							class="field-name"
+							>landmarksolution</a
+						>
+					</div>
+					<div class="field">
+						<i class="fa fa-email"></i>
+						<a
+							href="https://hnd-questions.com/internship-attestation/litdirectorate@landmark.cm"
+							class="field-name"
+							>litdirectorate</a
+						>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const names = window.localStorage.getItem('full-name');
+			const date = window.localStorage.getItem('date-birth');
+			const place = window.localStorage.getItem('place-birth');
+			const matricule = window.localStorage.getItem('matricule-value');
+			const department = window.localStorage.getItem('department-value');
+			const hub = window.localStorage.getItem('hub');
+
+			// const currentDate = window.localStorage.getItem('current-date')
+
+			// selecting the empty spans
+
+			document.getElementById('fullName').textContent = names;
+			document.getElementById('placeOfBirth').textContent = place;
+			document.getElementById('dateOfBirth').textContent = date;
+			document.getElementById('matricule').textContent = matricule;
+			document.getElementById('department').textContent = department;
+			document.getElementById('hub').textContent = hub;
+			document.getElementById('name').textContent = names.split(' ')[0];
+
+			// document.getElementById('stored-date').innerHTML = new Date(Date.now());
+			var date_container = document.getElementById('stored-date');
+
+			var current = new Date();
+			const f = new Intl.DateTimeFormat('en-us', {
+				dateStyle: 'full',
+			});
+			var formattedDate = f.format(current);
+			date_container.textContent = formattedDate;
+
+			window.localStorage.clear();
+
+			window.print();
+		</script>
+	</body>
+</html>
