@@ -190,10 +190,7 @@
 				font-weight: 700;
 				color: var(--primary-color);
 				margin: 8px 0;
-				text-decoration: underline;
-				text-decoration-color: var(--gold-color);
-				text-decoration-thickness: 3px;
-				text-underline-offset: 8px;
+				
 				text-transform: capitalize;
 			}
 
@@ -202,11 +199,10 @@
 				display: grid;
 				grid-template-columns: 1fr 1fr;
 				gap: 10px;
-				margin: 12px 0;
+				margin: 12px 30px;
 				padding: 10px;
-				background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+				background: white;
 				border-radius: 12px;
-				border: 1px solid var(--border-color);
 			}
 
 			.detail-item {
@@ -216,7 +212,6 @@
 				padding: 6px;
 				background: white;
 				border-radius: 8px;
-				box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 			}
 
 			.detail-label {
@@ -246,11 +241,9 @@
 
 			/* Internship Description */
 			.internship-description {
-				margin: 12px 0 20px 0;
+				margin: 12px 30px 20px 30px;
 				padding: 15px;
-				background: linear-gradient(135deg, rgba(181, 55, 97, 0.05) 0%, rgba(239, 125, 122, 0.05) 100%);
-				border-left: 4px solid var(--primary-color);
-				border-radius: 0 8px 8px 0;
+				background: white;
 				text-align: justify;
 				line-height: 1.6;
 				font-size: 14px;
@@ -273,6 +266,8 @@
 				margin-top: auto;
 				padding-top: 0px;
 				margin-bottom: 10mm;
+				margin-left: 30px;
+				margin-right: 30px;
 			}
 
 			.date-location {
@@ -308,36 +303,52 @@
 
 			/* Contact Information */
 			.contact-info {
-				background: var(--secondary-color);
-				color: white;
-				padding: 6px;
+				background: white;
+				color: var(--text-dark);
+				padding: 15px;
 				border-radius: 8px;
-				margin-top: 5px;
+				margin-top: 8px;
 			}
 
 			.contact-grid {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				flex-wrap: wrap;
-				gap: 8px;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 12px;
 				font-size: 12px;
 			}
 
 			.contact-item {
 				display: flex;
 				align-items: center;
-				gap: 5px;
+				gap: 8px;
+				padding: 8px;
+				background: rgba(40, 51, 81, 0.02);
+				border-radius: 6px;
+				border-left: 3px solid var(--primary-color);
+			}
+
+			.contact-item .icon {
+				font-weight: bold;
+				color: var(--primary-color);
+				font-size: 14px;
+				width: 16px;
+				text-align: center;
 			}
 
 			.contact-item a {
-				color: white;
+				color: var(--secondary-color);
 				text-decoration: none;
 				font-weight: 500;
 			}
 
 			.contact-item a:hover {
 				text-decoration: underline;
+				color: var(--primary-color);
+			}
+
+			.contact-item span:not(.icon) {
+				color: var(--secondary-color);
+				font-weight: 500;
 			}
 
 			/* Print Styles */
@@ -370,7 +381,7 @@
 					max-width: 200mm !important;
 					min-height: 287mm !important;
 					height: 287mm !important;
-					box-shadow: var(--shadow) !important;
+					box-shadow: none !important;
 				}
 
 				.certificate-content {
@@ -378,12 +389,39 @@
 					height: 287mm !important;
 				}
 
+				/* Remove all background colors and gradients for clean print */
+				.student-details,
+				.detail-item,
+				.internship-description,
+				.contact-info,
+				.contact-item {
+					background: white !important;
+					box-shadow: none !important;
+				}
+
+				.contact-info {
+					border: 1px solid var(--text-dark) !important;
+				}
+
+				.contact-item {
+					border-left: 2px solid var(--text-dark) !important;
+					background: white !important;
+				}
+
+				.contact-item a,
+				.contact-item span:not(.icon) {
+					color: var(--text-dark) !important;
+				}
+
+				.contact-item .icon {
+					color: var(--text-dark) !important;
+				}
+
 				/* Force grid layout for student details */
 				.student-details {
 					display: grid !important;
 					grid-template-columns: 1fr 1fr !important;
 					gap: 15px !important;
-					width: 100% !important;
 				}
 
 				.detail-item {
@@ -399,12 +437,16 @@
 					break-inside: avoid !important;
 				}
 
-				/* Keep contact grid as flex in print */
+				/* Keep contact grid layout in print */
 				.contact-grid {
+					display: grid !important;
+					grid-template-columns: 1fr 1fr !important;
+					gap: 8px !important;
+				}
+
+				.contact-item {
 					display: flex !important;
-					justify-content: space-between !important;
 					align-items: center !important;
-					flex-wrap: wrap !important;
 				}
 			}
 
@@ -451,6 +493,11 @@
 
 				.contact-grid {
 					grid-template-columns: 1fr;
+					gap: 8px;
+				}
+
+				.contact-item {
+					justify-content: flex-start;
 				}
 			}
 		</style>
@@ -527,19 +574,19 @@
 					<div class="contact-info">
 						<div class="contact-grid">
 							<div class="contact-item">
-								<span>📞</span>
+								<span class="icon">📞</span>
 								<span>+1(437)221-3099 | +1(647)267-6399</span>
 							</div>
 							<div class="contact-item">
-								<span>🌐</span>
+								<span class="icon">🌐</span>
 								<a href="#">landmarksolution.cm</a>
 							</div>
 							<div class="contact-item">
-								<span>📞</span>
+								<span class="icon">📞</span>
 								<span>+1(437)213-2483 | +1(470)483-2473</span>
 							</div>
 							<div class="contact-item">
-								<span>✉️</span>
+								<span class="icon">✉️</span>
 								<a href="#">litdirectorate@landmark.cm</a>
 							</div>
 						</div>
