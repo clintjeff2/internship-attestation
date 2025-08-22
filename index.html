@@ -3,8 +3,13 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Landmark Student Portal - Internship Attestation Registration Form" />
+		<meta name="theme-color" content="#b53761" />
 		<title>LandmarkStudentPortal.com</title>
 		<link rel="stylesheet" href="css/main.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -32,7 +37,7 @@
 								type="text"
 								name="name"
 								id="name"
-								placeholder="as on birth certificate"
+								placeholder="As on birth certificate"
 							/>
 						</div>
 						<div class="input-field">
@@ -52,6 +57,7 @@
 								type="text"
 								name="placeOfBirth"
 								id="placeOfBirth"
+								placeholder="E.g. Kumba"
 							/>
 						</div>
 						<div class="input-field">
@@ -61,7 +67,7 @@
 								type="text"
 								name="matricule"
 								id="matricule"
-								placeholder="e.g. LMU24SWE002"
+								placeholder="E.g. LMU24SWE002"
 							/>
 						</div>
 						<div class="input-field">
@@ -71,7 +77,7 @@
 								type="text"
 								name="department"
 								id="department"
-								placeholder="e.g. Software Engineering"
+								placeholder="E.g. Software Engineering"
 							/>
 						</div>
 						<div class="input-field">
@@ -81,7 +87,7 @@
 								type="text"
 								name="hub"
 								id="hub"
-								placeholder="e.g. Full Stack Development, React Development, Multimedia and Animation Studio"
+								placeholder="E.g. Full Stack Development, React Development, Multimedia and Animation Studio"
 							/>
 						</div>
 
@@ -98,19 +104,26 @@
 				</div>
 			</div>
 		</div>
-		<footer
-			style="
-				padding: 30px;
-				width: 100%;
-				text-align: center;
-				color: white;
-				background-color: #04143f;
-			"
-		>
-			@2024 By <b>Landmark Engineers</b>
+		<footer class="main-footer">
+			<div class="footer-content">
+				<div class="footer-text">
+					<p>&copy; 2024 By <strong>Landmark Engineers</strong></p>
+					<p>Empowering the next generation of tech professionals</p>
+				</div>
+				<div class="footer-decoration"></div>
+			</div>
 		</footer>
 
 		<script defer>
+			// Enhanced form functionality with animations and validation
+			document.addEventListener('DOMContentLoaded', function() {
+				// Add fade-in animation to form elements
+				const formElements = document.querySelectorAll('.input-field');
+				formElements.forEach((element, index) => {
+					element.style.animationDelay = `${0.1 * (index + 1)}s`;
+				});
+			});
+
 			// getting all the fields
 			const form = document.getElementById('form');
 			const names = document.getElementById('name');
@@ -119,72 +132,153 @@
 			const matricule = document.getElementById('matricule');
 			const department = document.getElementById('department');
 			const hub = document.getElementById('hub');
-			// const project = document.getElementById('project');
 
-			const btn = document.querySelector('.llt');
 			const btn2 = document.querySelector('.lss');
 
+			// Add input validation with visual feedback
+			function addInputValidation(input) {
+				input.addEventListener('focus', function() {
+					this.parentElement.querySelector('label').style.color = '#b53761';
+				});
+
+				input.addEventListener('blur', function() {
+					this.parentElement.querySelector('label').style.color = '#283351';
+					if (this.value.trim() === '') {
+						this.style.borderColor = '#ef7d7a';
+						this.style.background = 'rgba(239, 125, 122, 0.05)';
+					} else {
+						this.style.borderColor = '#b53761';
+						this.style.background = 'rgba(181, 55, 97, 0.05)';
+					}
+				});
+
+				input.addEventListener('input', function() {
+					if (this.value.trim() !== '') {
+						this.style.borderColor = '#b53761';
+						this.style.background = 'rgba(181, 55, 97, 0.05)';
+					}
+				});
+			}
+
+			// Apply validation to all inputs
+			[names, dateOfBirth, placeOfBirth, matricule, department, hub].forEach(addInputValidation);
+
+			// Enhanced form submission with loading state
 			form.addEventListener('submit', (e) => {
-				// prevents form from submitting
 				e.preventDefault();
 
-				// getting the inputted values
-				const nameValue = names.value;
+				const nameValue = names.value.trim();
 				const birthValue = dateOfBirth.value;
-				const placevalue = placeOfBirth.value;
-				const matriculeValue = matricule.value;
-				const departmentValue = department.value;
-				const hubName = hub.value;
+				const placevalue = placeOfBirth.value.trim();
+				const matriculeValue = matricule.value.trim();
+				const departmentValue = department.value.trim();
+				const hubName = hub.value.trim();
 
-				// storing to local storage
+				// Store to local storage
 				window.localStorage.setItem('full-name', nameValue);
 				window.localStorage.setItem('date-birth', birthValue);
 				window.localStorage.setItem('place-birth', placevalue);
 				window.localStorage.setItem('matricule-value', matriculeValue);
 				window.localStorage.setItem('department-value', departmentValue);
 				window.localStorage.setItem('hub', hubName);
-
-				// window.location.href = "LMT.html";
 			});
 
-			// this ensures all inputs are filled
-			// btn.addEventListener('click', () => {
-			// 	// window.location.href = "LMT.html";
-			// 	var nv = names.value;
-			// 	var dv = dateOfBirth.value;
-			// 	var pv = placeOfBirth.value;
-			// 	var mat = matricule.value;
-			// 	var dp = department.value;
+			btn2.addEventListener('click', (e) => {
+				e.preventDefault();
+				
+				const inputs = [names, dateOfBirth, placeOfBirth, matricule, department, hub];
+				const values = inputs.map(input => input.value.trim());
+				const isEmpty = values.some(value => value === '');
 
-			// 	if (nv === '' || dv === '' || pv === '' || mat === '' || dp === '') {
-			// 		alert('all inputs must be filled');
-			// 	} else {
-			// 		window.location.href = 'LMT.html';
-			// 	}
-			// });
-
-			btn2.addEventListener('click', () => {
-				// window.location.href = "LMT.html";
-				// alert('all inputs must be filled');
-				var nv = names.value;
-				var dv = dateOfBirth.value;
-				var pv = placeOfBirth.value;
-				var mat = matricule.value;
-				var dp = department.value;
-				var hb = hub.value;
-
-				if (nv === '' || dv === '' || pv === '' || mat === '' || dp === '') {
-					alert('all inputs must be filled');
-				} else {
-					window.location.href = 'LSS.html';
+				if (isEmpty) {
+					// Enhanced alert with animation
+					showAlert('Please fill in all required fields', 'error');
+					
+					// Highlight empty fields
+					inputs.forEach(input => {
+						if (input.value.trim() === '') {
+							input.style.borderColor = '#dc3545';
+							input.style.background = 'rgba(220, 53, 69, 0.05)';
+							input.style.animation = 'shake 0.5s ease-in-out';
+						}
+					});
+					return;
 				}
+
+				// Add loading state to button
+				btn2.classList.add('loading');
+				btn2.textContent = 'Generating...';
+
+				// Store values first
+				window.localStorage.setItem('full-name', values[0]);
+				window.localStorage.setItem('date-birth', values[1]);
+				window.localStorage.setItem('place-birth', values[2]);
+				window.localStorage.setItem('matricule-value', values[3]);
+				window.localStorage.setItem('department-value', values[4]);
+				window.localStorage.setItem('hub', values[5]);
+
+				// Debug: log what we're storing
+				console.log('Storing to localStorage:', {
+					'full-name': values[0],
+					'date-birth': values[1],
+					'place-birth': values[2],
+					'matricule-value': values[3],
+					'department-value': values[4],
+					'hub': values[5]
+				});
+
+				// Simulate processing time then redirect
+				setTimeout(() => {
+					window.location.href = 'LSS.html';
+				}, 1000);
 			});
 
-			// Get the current date and insert it into the HTML document
-			// var currentDateElement = document.getElementById("currentDate");
-			// currentDateElement.innerHTML = "Current Date: " + getCurrentDate();
+			// Custom alert function
+			function showAlert(message, type = 'info') {
+				const alertDiv = document.createElement('div');
+				alertDiv.style.cssText = `
+					position: fixed;
+					top: 20px;
+					right: 20px;
+					background: ${type === 'error' ? '#dc3545' : '#28a745'};
+					color: white;
+					padding: 1em 1.5em;
+					border-radius: 8px;
+					z-index: 10000;
+					animation: slideInRight 0.3s ease-out;
+					box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+				`;
+				alertDiv.textContent = message;
+				document.body.appendChild(alertDiv);
 
-			window.localStorage.clear();
+				setTimeout(() => {
+					alertDiv.style.animation = 'slideOutRight 0.3s ease-in';
+					setTimeout(() => alertDiv.remove(), 300);
+				}, 3000);
+			}
+
+			// Add shake animation for validation errors
+			const style = document.createElement('style');
+			style.textContent = `
+				@keyframes shake {
+					0%, 100% { transform: translateX(0); }
+					25% { transform: translateX(-5px); }
+					75% { transform: translateX(5px); }
+				}
+				@keyframes slideInRight {
+					from { transform: translateX(100%); opacity: 0; }
+					to { transform: translateX(0); opacity: 1; }
+				}
+				@keyframes slideOutRight {
+					from { transform: translateX(0); opacity: 1; }
+					to { transform: translateX(100%); opacity: 0; }
+				}
+			`;
+			document.head.appendChild(style);
+
+			// Clear localStorage on page load (not after storing data)
+			// Commented out to prevent clearing data before LSS.html can read it
+			// window.localStorage.clear();
 		</script>
 	</body>
 </html>
