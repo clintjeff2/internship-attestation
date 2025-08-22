@@ -8,7 +8,7 @@
 		<title>Landmark Software Solutions - Internship Certificate</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 		<style>
 			:root {
 				--primary-color: #b53761;
@@ -122,9 +122,9 @@
 			}
 
 			.company-name h1 {
-				font-family: 'Playfair Display', serif;
+				font-family: 'Cinzel', serif;
 				font-size: 22px;
-				font-weight: 700;
+				font-weight: 600;
 				color: var(--primary-color);
 				margin: 0;
 				text-transform: uppercase;
@@ -132,12 +132,14 @@
 			}
 
 			.company-name h2 {
+				font-family: 'Cormorant Garamond', serif;
 				font-size: 14px;
 				font-weight: 500;
 				color: var(--secondary-color);
 				margin: 0;
 				text-transform: uppercase;
 				letter-spacing: 2px;
+				font-style: italic;
 			}
 
 			/* Certificate Title */
@@ -146,9 +148,9 @@
 			}
 
 			.certificate-title h1 {
-				font-family: 'Playfair Display', serif;
+				font-family: 'Cinzel', serif;
 				font-size: 28px;
-				font-weight: 700;
+				font-weight: 600;
 				color: var(--secondary-color);
 				text-transform: uppercase;
 				letter-spacing: 2px;
@@ -156,9 +158,11 @@
 			}
 
 			.certificate-subtitle {
+				font-family: 'Cormorant Garamond', serif;
 				font-size: 16px;
 				color: var(--text-light);
 				font-weight: 500;
+				font-style: italic;
 				text-transform: uppercase;
 				letter-spacing: 1px;
 			}
@@ -184,13 +188,17 @@
 			}
 
 			.student-name {
-				font-family: 'Playfair Display', serif;
-				font-size: 36px;
-				font-weight: 700;
+				font-family: 'Great Vibes', cursive;
+				font-size: 42px;
+				font-weight: 400;
 				color: var(--primary-color);
 				margin: 8px 0;
-				
+				text-decoration: underline;
+				text-decoration-color: var(--gold-color);
+				text-decoration-thickness: 2px;
+				text-underline-offset: 8px;
 				text-transform: capitalize;
+				text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 			}
 
 			/* Student Details Grid */
@@ -293,10 +301,11 @@
 			}
 
 			.signature-title {
-				font-size: 12px;
+				font-family: 'Dancing Script', cursive;
+				font-size: 16px;
 				font-weight: 600;
 				color: var(--text-light);
-				text-transform: uppercase;
+				text-transform: capitalize;
 				letter-spacing: 1px;
 			}
 
@@ -350,6 +359,42 @@
 				font-weight: 500;
 			}
 
+			/* Print Button */
+			.print-button {
+				position: fixed;
+				top: 20px;
+				right: 20px;
+				background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+				color: white;
+				border: none;
+				padding: 12px 24px;
+				border-radius: 50px;
+				font-size: 14px;
+				font-weight: 600;
+				cursor: pointer;
+				box-shadow: 0 4px 15px rgba(181, 55, 97, 0.3);
+				transition: all 0.3s ease;
+				z-index: 1000;
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				font-family: 'Inter', sans-serif;
+			}
+
+			.print-button:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(181, 55, 97, 0.4);
+				background: linear-gradient(135deg, #9d2f52 0%, #d66b6b 100%);
+			}
+
+			.print-button:active {
+				transform: translateY(0);
+			}
+
+			.print-button .icon {
+				font-size: 16px;
+			}
+
 			/* Print Styles */
 			@media print {
 				@page {
@@ -370,8 +415,9 @@
 					padding: 0 !important;
 				}
 
-				/* Hide notifications in print */
-				div[style*="position: fixed"] {
+				/* Hide notifications and print button in print */
+				div[style*="position: fixed"],
+				.print-button {
 					display: none !important;
 				}
 
@@ -398,9 +444,6 @@
 					box-shadow: none !important;
 				}
 
-				.contact-info {
-					border: 1px solid var(--text-dark) !important;
-				}
 
 				.contact-item {
 					border-left: 2px solid var(--text-dark) !important;
@@ -498,10 +541,27 @@
 				.contact-item {
 					justify-content: flex-start;
 				}
+
+				.print-button {
+					top: 10px;
+					right: 10px;
+					padding: 10px 20px;
+					font-size: 12px;
+				}
+
+				.print-button .icon {
+					font-size: 14px;
+				}
 			}
 		</style>
 	</head>
 	<body>
+		<!-- Print Button -->
+		<button class="print-button" onclick="window.print()" title="Print Certificate">
+			<span class="icon">🖨️</span>
+			<span>Print Certificate</span>
+		</button>
+
 		<div class="certificate-container">
 			<!-- Decorative Border -->
 			<div class="certificate-border"></div>
