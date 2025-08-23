@@ -48,10 +48,10 @@
 			/* Decorative Border */
 			.certificate-border {
 				position: absolute;
-				top: 15mm;
-				left: 15mm;
-				right: 15mm;
-				bottom: 15mm;
+				top: 0mm;
+				left: 0mm;
+				right: 0mm;
+				bottom: 0mm;
 				border: 3px solid var(--primary-color);
 				border-radius: 8px;
 			}
@@ -68,22 +68,22 @@
 			}
 
 			/* Corner Decorations */
-			.corner-decoration {
+			/* .corner-decoration {
 				position: absolute;
 				width: 60px;
 				height: 60px;
 				background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
 				clip-path: polygon(0 0, 100% 0, 0 100%);
-			}
+			} */
 
-			.corner-decoration.top-left { top: 15mm; left: 15mm; }
+			/* .corner-decoration.top-left { top: 15mm; left: 15mm; }
 			.corner-decoration.top-right { top: 15mm; right: 15mm; transform: rotate(90deg); }
 			.corner-decoration.bottom-left { bottom: 15mm; left: 15mm; transform: rotate(-90deg); }
-			.corner-decoration.bottom-right { bottom: 15mm; right: 15mm; transform: rotate(180deg); }
+			.corner-decoration.bottom-right { bottom: 15mm; right: 15mm; transform: rotate(180deg); } */
 
 			/* Content Wrapper */
 			.certificate-content {
-				padding: 12mm 15mm 8mm 15mm;
+				padding: 20px;
 				position: relative;
 				z-index: 2;
 				height: 297mm;
@@ -96,7 +96,7 @@
 				text-align: center;
 				margin-bottom: 10px;
 				padding-bottom: 10px;
-				margin-top: 50px;
+				margin-top: 10px;
 			}
 
 			.logo-section {
@@ -123,7 +123,7 @@
 
 			.company-name h1 {
 				font-family: 'Cinzel', serif;
-				font-size: 22px;
+				font-size: 25px;
 				font-weight: 600;
 				color: var(--primary-color);
 				margin: 0;
@@ -133,7 +133,7 @@
 
 			.company-name h2 {
 				font-family: 'Cormorant Garamond', serif;
-				font-size: 14px;
+				font-size: 17px;
 				font-weight: 500;
 				color: var(--secondary-color);
 				margin: 0;
@@ -149,7 +149,7 @@
 
 			.certificate-title h1 {
 				font-family: 'Cinzel', serif;
-				font-size: 28px;
+				font-size: 31px;
 				font-weight: 600;
 				color: var(--secondary-color);
 				text-transform: uppercase;
@@ -159,7 +159,7 @@
 
 			.certificate-subtitle {
 				font-family: 'Cormorant Garamond', serif;
-				font-size: 16px;
+				font-size: 19px;
 				color: var(--text-light);
 				font-weight: 500;
 				font-style: italic;
@@ -179,7 +179,7 @@
 			}
 
 			.attestation-text {
-				font-size: 18px;
+				font-size: 21px;
 				font-weight: 600;
 				color: var(--secondary-color);
 				margin-bottom: 8px;
@@ -189,14 +189,10 @@
 
 			.student-name {
 				font-family: 'Great Vibes', cursive;
-				font-size: 42px;
+				font-size: 45px;
 				font-weight: 400;
 				color: var(--primary-color);
 				margin: 8px 0;
-				text-decoration: underline;
-				text-decoration-color: var(--gold-color);
-				text-decoration-thickness: 2px;
-				text-underline-offset: 8px;
 				text-transform: capitalize;
 				text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 			}
@@ -222,7 +218,7 @@
 			}
 
 			.detail-label {
-				font-size: 12px;
+				font-size: 15px;
 				font-weight: 600;
 				color: var(--text-light);
 				text-transform: uppercase;
@@ -231,13 +227,9 @@
 			}
 
 			.detail-value {
-				font-size: 14px;
+				font-size: 17px;
 				font-weight: 600;
 				color: var(--text-dark);
-				text-decoration: underline;
-				text-decoration-color: var(--primary-color);
-				text-decoration-thickness: 2px;
-				text-underline-offset: 4px;
 			}
 
 			.matricule-value {
@@ -253,13 +245,12 @@
 				background: white;
 				text-align: justify;
 				line-height: 1.6;
-				font-size: 14px;
+				font-size: 18.5px;
 			}
 
 			.hub-highlight {
 				font-weight: 700;
 				color: var(--primary-color);
-				text-decoration: underline;
 			}
 
 			.name-highlight {
@@ -430,7 +421,7 @@
 				}
 
 				.certificate-content {
-					padding: 12mm 15mm 8mm 15mm !important;
+					padding: 10px !important;
 					height: 287mm !important;
 				}
 
